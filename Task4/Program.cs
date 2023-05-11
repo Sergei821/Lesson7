@@ -36,7 +36,13 @@ int SumDiagonal(int[,] array)
     int sum = 0;
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        sum += array[i, i];
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (i == j)
+            {
+                sum += array[i, j];
+            }
+        }
     }
     return sum;
 }
@@ -45,3 +51,4 @@ int rows = ReadInt("Введите количество строк");
 int columns = ReadInt("Введите количество колонок");
 int[,] arr = Generate2DArray(rows, columns);
 Print2DArray(arr);
+System.Console.WriteLine($"Сумма главной диагонали равна {SumDiagonal(arr)}");
